@@ -39,6 +39,6 @@ class Post (models.Model):
     def clean(self):
         if len(self.title) < 5:
             raise ValidationError(
-                 {'Error: El título debe tener más de cinco caracteres'}
+                 {'title': 'El título debe tener más de cinco caracteres'}
         )
 
