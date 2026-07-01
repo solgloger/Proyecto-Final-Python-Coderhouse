@@ -1,9 +1,9 @@
-from django.shortcuts import render
-from .models import Post
+from .models import Post, Author
 from .forms import PostForm
 from django.urls import reverse_lazy
-from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView, TemplateView
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.shortcuts import render
 # Create your views here.
 
 class PostListView (ListView):
@@ -49,3 +49,16 @@ class PostDeleteView (LoginRequiredMixin, DeleteView):
     success_url = reverse_lazy(
         "post_list"
     )
+
+class HomeView(TemplateView):
+    template_name = "home.html" 
+
+def buscar_autores(request):
+    query = request.GET.get("q", "")
+
+    resultados = Author.objects.filter(name__icontains=query) if query else []
+
+    return render(request, "blog/search_authors.html", {
+        "resultados": resultados,
+        "query": query
+    })

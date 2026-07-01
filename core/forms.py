@@ -8,7 +8,6 @@ class PostForm(forms.ModelForm):
         fields = [
             "title",
             "content",
-            "published_date",
             "author",
             "tags",
         ]

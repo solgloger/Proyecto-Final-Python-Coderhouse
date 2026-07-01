@@ -1,11 +1,11 @@
-<h1>Post</h1>
+<h1>{{ post.title }}</h1>
 
-<form method="post">
-    {% csrf_token %}
+<p>{{ post.content }}</p>
 
-    {{ form.as_p }}
+<a href="{% url 'core:post_update' post.pk %}">
+    Editar
+</a>
 
-    <button type="submit">
-        Guardar
-    </button>
-</form>
+<a href="{% url 'core:post_delete' post.pk %}">
+    Eliminar
+</a>

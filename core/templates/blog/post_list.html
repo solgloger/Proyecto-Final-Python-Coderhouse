@@ -1,9 +1,7 @@
 {% extends 'base.html' %}
 
-{% load blog_filters %}
-
 {% block title %}
-    Lista de Posts
+    Posts
 {% endblock %}
 
 {% block content %}
@@ -19,7 +17,8 @@
 <ul>
     {% for post in posts %}
         <li>
-           <h3>{{ post.title }}</h3>
+
+            <h3>{{ post.title }}</h3>
 
             <p>
                 {{ post.content|truncatechars:100 }}
@@ -30,7 +29,6 @@
                 <a href="{% url 'core:post_detail' post.pk %}">
                     Ver
                 </a>
-
 
                 <a href="{% url 'core:post_update' post.pk %}">
                     Editar
@@ -43,11 +41,8 @@
             </div>
 
         </li>
-
     {% empty %}
-
         <li>No hay publicaciones.</li>
-
     {% endfor %}
 </ul>
 
