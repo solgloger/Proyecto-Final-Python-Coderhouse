@@ -21,6 +21,11 @@ load_dotenv()
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
+LOGIN_URL = "core:login"
+LOGIN_REDIRECT_URL = "core:post_list"
+LOGOUT_REDIRECT_URL = "core:login"
+
+
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv('SECRET_KEY')
 

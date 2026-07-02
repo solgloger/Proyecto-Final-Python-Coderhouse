@@ -1,5 +1,15 @@
 from django.urls import path
-from .views import (HomeView, PostDetailView, PostListView, PostCreateView, PostUpdateView, PostDeleteView, buscar_autores)
+from .views import (
+    HomeView,
+    PostDetailView, 
+    PostListView, 
+    PostCreateView, 
+    PostUpdateView, 
+    PostDeleteView, 
+    UserRegisterView, 
+    UserLoginView, 
+    UserLogoutView, 
+    buscar_autores)
 
 app_name = "core"
 
@@ -41,4 +51,22 @@ urlpatterns = [
     ),
 
     path("buscar/", buscar_autores, name="search_authors"),
+
+     path(
+    "register/",
+    UserRegisterView.as_view(),
+    name="register"
+    ),
+
+    path(
+        "login/",
+        UserLoginView.as_view(),
+        name="login"
+    ),
+
+    path(
+        "logout/",
+        UserLogoutView.as_view(),
+        name="logout"
+    ),
 ]
