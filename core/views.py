@@ -37,6 +37,19 @@ class PostCreateView (LoginRequiredMixin, CreateView):
         "core:post_list"
     )
 
+    def form_valid(self, form):
+
+        author, created = Author.objects.get_or_create(
+            user=self.request.user,
+            defaults={
+                "name": self.request.user.username,
+                "email": self.request.user.email
+            }
+        )
+
+        form.instance.author = author
+        return super().form_valid(form)
+
 class PostUpdateView (LoginRequiredMixin, UpdateView):
     model = Post
     form_class = PostForm
