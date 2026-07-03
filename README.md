@@ -116,6 +116,18 @@ python manage.py runserver
 - Seguridad CSRF
 - Django Admin
 
+## 🛫 Deploy
+
+Este proyecto fue desplegado en Render
+
+🔗 URL pública: https://proyecto-final-python-coderhouse-2.onrender.com 
+
+### Configuración del despliegue
+
+- **Build Command:** `pip install -r requirements.txt`
+- **Start Command:** `gunicorn config.wsgi:application`
+
+
 ## 📌 Notas del proyecto
 
 Este proyecto fue desarrollado con fines educativos como práctica integral de Django, consolidando el flujo completo de desarrollo de una aplicación web desde modelos hasta vistas y templates.
